@@ -14,7 +14,7 @@ export default async function AuthLayout({
   }
   return (
     <section>
-      <SiteHeader withCounter={false} withAvatar={false} />
+      <SiteHeader withCounter={false} withAvatar={false} user={user} />
       {children}
     </section>
   );
