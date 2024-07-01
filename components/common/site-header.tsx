@@ -22,7 +22,7 @@ import Topnav from "./top-nav";
 type SiteHeaderProps = {
   withCounter: boolean;
   withAvatar: boolean;
-  user: GetUserResponse;
+  user?: GetUserResponse;
 };
 
 export default function SiteHeader(props: SiteHeaderProps): React.JSX.Element {
