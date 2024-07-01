@@ -130,7 +130,7 @@ interface ScrollButtonProps {
 const ScrollButton = ({ icon, onClick, disabled }: ScrollButtonProps) => {
   const Icon = icon;
   const [isPressed, setIsPressed] = React.useState(false);
-  const intervalRef = React.useRef<NodeJS.Timeout | null>(null);
+  const intervalRef = React.useRef<any | null>(null);
 
   React.useEffect(() => {
     if (isPressed) {
@@ -206,7 +206,7 @@ const Legend = React.forwardRef<HTMLOListElement, LegendProps>((props, ref) => {
   const scrollButtonsRef = React.useRef<HTMLDivElement>(null);
   const [hasScroll, setHasScroll] = React.useState<HasScrollProps | null>(null);
   const [isKeyDowned, setIsKeyDowned] = React.useState<string | null>(null);
-  const intervalRef = React.useRef<NodeJS.Timeout | null>(null);
+  const intervalRef = React.useRef<any | null>(null);
 
   const checkScroll = React.useCallback(() => {
     const scrollable = scrollableRef?.current;
@@ -733,6 +733,7 @@ const BarChart = React.forwardRef<HTMLDivElement, BarChartProps>((props, forward
               x: layout === "horizontal" ? undefined : yAxisWidth + 20,
             }}
             content={({ active, payload, label }) => {
+              // eslint-disable-next-line react-hooks/rules-of-hooks
               React.useEffect(() => {
                 if (tooltipCallback && payload) {
                   const filteredPayload = payload.map((item: any) => ({
@@ -748,7 +749,7 @@ const BarChart = React.forwardRef<HTMLDivElement, BarChartProps>((props, forward
                     label,
                   });
                 }
-              }, [label, active]);
+              }, [label, active, payload]);
 
               return showTooltip && active ? (
                 <ChartTooltip
